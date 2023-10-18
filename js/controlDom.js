@@ -29,26 +29,27 @@ export const createMovieItem = (movieInfo) => {
   otherInfoUl.classList.add('other-info-list');
   append(
     otherInfoUl,
-    createMovieOtherInfoElement({
-      title: '영화 평점',
-      desc: vote_average,
-    }),
+    createMovieOtherInfoElement([
+      {
+        title: '영화 평점',
+        desc: vote_average,
+      },
+    ]),
   );
 
   append(movieLi, [movieImg, movieHeading, descP, otherInfoUl]);
   return movieLi;
 };
 export const createMovieOtherInfoElement = (info) => {
-  const result = [];
-  for (const key in info) {
+  const result = info.map(({ title, desc }) => {
     const otherInfoItemLi = create('li');
     const titleSpan = create('span');
     const descSpan = create('span');
 
-    titleSpan.innerText = key;
-    descSpan.innerText = info[key];
+    titleSpan.innerText = title;
+    descSpan.innerText = desc;
 
-    result.push(append(otherInfoItemLi, [titleSpan, descSpan]));
-  }
+    return append(otherInfoItemLi, [titleSpan, descSpan]);
+  });
   return result;
 };
