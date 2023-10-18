@@ -4,7 +4,6 @@ html,
 body {
   width: 100vw;
   height: 100vw;
-  overflow: hidden;
   background-color: black;
 }
 * {
@@ -89,4 +88,36 @@ header h1 {
   left: 0;
   background: inherit;
   border-radius: inherit;
+}
+#movies-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.movie-item {
+  border: 1px solid white;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  width: 600px;
+  height: 600px;
+}
+.movie-item div {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.movie-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }

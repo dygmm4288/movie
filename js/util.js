@@ -20,3 +20,17 @@ export function setAttribute(element, attributes) {
     element.setAttribute(key, attributes[key]);
   }
 }
+export function map(arr, iteratee) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(iteratee(arr[i], i, arr));
+  }
+  return result;
+}
+
+export const makeId = (function* () {
+  let id = 0;
+  while (true) {
+    yield id++;
+  }
+})();
