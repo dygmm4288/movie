@@ -1,70 +1,92 @@
+:root {
+}
 html,
 body {
   width: 100vw;
-  background-color: #111;
+  height: 100vw;
+  overflow: hidden;
+  background-color: black;
 }
 * {
-  color: white;
   box-sizing: border-box;
 }
+
 header {
+  position: absolute;
   width: 100vw;
-  padding: 2.5rem;
   text-align: center;
-}
-#search-bar {
-  width: 100vw;
-  padding: 2.5rem;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
 
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-main,
-#movies-wrapper {
-  width: 100vw;
-}
-#movies-wrapper {
-  padding: 2.5rem;
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
-}
-
-/* ======== header ===========*/
-/* ======== search-bar ===========*/
-/* ======== main ===========*/
-.movie-item {
-  border: 1px solid red;
-  border-radius: 1rem;
-  padding: 2.5rem;
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   flex-direction: column;
-  gap: 1rem;
-
-  cursor: pointer;
+  gap: 2rem;
 }
-.movie-item .movie-img {
-  object-fit: contain;
-  width: 250px;
+header h1 {
+  background: linear-gradient(to right, #ffffff 0%, #727280 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
-.movie-item .movie-heading {
-  font-size: 1.5rem;
-  text-align: center;
-}
-.movie-item .movie-desc {
-  flex: 1;
-}
-
-.movie-item .other-info-list {
+#search-bar-form {
+  border: 0.125rem solid transparent;
+  border-radius: 2rem;
+  background-image: linear-gradient(black, black), linear-gradient(-65deg, #ff3d00 0%, #0400ff 100%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  width: 50%;
+  max-width: 500px;
+  margin: 0 auto;
   display: flex;
-  align-self: stretch;
+  position: relative;
 }
-.movie-item .other-info-list .title {
-  margin-right: 0.5rem;
+#search-bar-input {
+  flex: 1;
+  line-height: 3rem;
+  box-sizing: border-box;
+
+  padding: 0 1rem;
+  border-radius: 25rem;
+  border: none;
+
+  background-color: black;
+  color: white;
+}
+#search-bar-input:focus {
+  outline: none;
+}
+
+#search-bar-form:before {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(-65deg, #ff3d00 0%, #0400ff 100%);
+  transform: translate3d(0px, 0px, 0) scale(1.05);
+  filter: blur(50px);
+  opacity: var(0.7);
+  transition: opacity 0.3s;
+  border-radius: inherit;
+}
+
+/* 
+* Prevents issues when the parent creates a 
+* stacking context. (For example, using the transform
+* property )
+*/
+#search-bar-form::after {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  border-radius: inherit;
 }
