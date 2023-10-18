@@ -1,4 +1,4 @@
-import { append, create, setAttribute } from './util';
+import { append, create, setAttribute } from './util.js';
 
 export const createMovieItem = (movieInfo) => {
   const { title, id, overview, poster_path, vote_average, original_title } = movieInfo;
@@ -14,7 +14,7 @@ export const createMovieItem = (movieInfo) => {
   /*  영화 이미지 */
   movieImg.classList.add('movie-img');
   setAttribute(movieImg, {
-    src: poster_path,
+    src: 'https://image.tmdb.org/t/p/w500' + poster_path,
     alt: original_title,
   });
   /* 영화 제목 */
@@ -36,6 +36,7 @@ export const createMovieItem = (movieInfo) => {
   );
 
   append(movieLi, [movieImg, movieHeading, descP, otherInfoUl]);
+  return movieLi;
 };
 export const createMovieOtherInfoElement = (info) => {
   const result = [];
