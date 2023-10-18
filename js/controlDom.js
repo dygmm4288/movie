@@ -10,6 +10,10 @@ export const createMovieItem = (movieInfo) => {
 
   /* 영화 wrapper */
   movieLi.dataset.id = id;
+  movieLi.classList.add('movie-item');
+  movieLi.addEventListener('click', () => {
+    alert(id);
+  });
 
   /*  영화 이미지 */
   movieImg.classList.add('movie-img');
@@ -48,6 +52,9 @@ export const createMovieOtherInfoElement = (info) => {
 
     titleSpan.innerText = title;
     descSpan.innerText = desc;
+
+    titleSpan.classList.add('title');
+    titleSpan.classList.add('desc');
 
     return append(otherInfoItemLi, [titleSpan, descSpan]);
   });
