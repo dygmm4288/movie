@@ -1,9 +1,13 @@
 import { createMovieItem } from './controlDom.js';
 import { append, select } from './util.js';
 
+const serachInput = select('#search-bar-input');
+serachInput.focus();
+
 export function searchMovie(movies) {
   return (value) => {
-    return movies.filter((movie) => movie.title.indexOf(value) !== -1);
+    const lowerValue = value.toLowerCase();
+    return movies.filter((movie) => movie.title.toLowerCase().indexOf(lowerValue) !== -1);
   };
 }
 
@@ -15,7 +19,7 @@ export function submitSearchEvent(movies) {
     const moviesWrapperUl = select('#movies-wrapper');
 
     moviesWrapperUl.innerHTML = '';
-    console.log(nextMovies);
     append(moviesWrapperUl, nextMovies.map(createMovieItem));
+    serachInput.focus();
   };
 }
