@@ -18,17 +18,22 @@
     <main>
       <ul id="movies-wrapper">
         <li class="movie-item">
-          <img src="영화 주소" alt="영화 이름" />
+          <img class="movie-img" src="영화 주소" alt="영화 이름" />
           <h3 class="movie-heading">영화 제목</h3>
           <p class="movie-desc">영화에 대한 내용</p>
           <div class="other-info">
-            <div class="other-info-item">
-              <span>영화 평점</span>
-              <span>9.5</span>
-            </div>
+            <ul class="other-info-list">
+              <li class="other-info-item">
+                <span class="title">영화 평점</span>
+                <span class="desc">9.5</span>
+              </li>
+            </ul>
           </div>
         </li>
       </ul>
     </main>
+    <script type="module" src="./js/util.js"></script>
+    <script type="module" src="./js/controlDom.js"></script>
+    <script type="module" src="./js/controlAsync.js"></script>
   </body>
 </html>
