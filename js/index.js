@@ -1,13 +1,18 @@
 import { getMovies } from './controlAsync.js';
 import { createMovieItem } from './controlDom.js';
+import { submitSearchEvent } from './search.js';
 import { append, select } from './util.js';
-getMovies('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1')
+let movies = await getMovies('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1')
   .then((res) => res.json())
   .then((data) => {
-    const movies = data.results;
     const moviesWrapperUl = select('#movies-wrapper');
+    moviesWrapperUl.innerHTML = '';
     append(
       moviesWrapperUl,
-      movies.map((movieInfo) => createMovieItem(movieInfo)),
+      data.results.map((movieInfo) => createMovieItem(movieInfo)),
     );
+    return data.results;
   });
+
+const searchForm = select('#search-bar-form');
+searchForm.addEventListener('submit', submitSearchEvent(movies));
