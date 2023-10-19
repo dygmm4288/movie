@@ -94,6 +94,7 @@ header h1 {
   height: 100vh;
   position: relative;
 }
+
 .movie-item {
   border: 1px solid white;
   border-radius: 50%;
@@ -101,23 +102,87 @@ header h1 {
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
-
-  width: 600px;
-  height: 600px;
 }
-.movie-item div {
-  width: 1.5rem;
-  height: 1.5rem;
+.movie-item .movie-circle {
+  width: 100px;
+  height: 100px;
   color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   border: 1px solid white;
   border-radius: 50%;
+  overflow: hidden;
+  transition: width, height, border-radius 0.2s ease-in;
 }
-
-.movie-img {
+.movie-circle .movie-circle-img {
   width: 100px;
   height: 100px;
+  object-fit: cover;
+}
+.movie-circle:hover {
+  width: 300px;
+  height: 600px;
+  border-radius: 2rem;
+}
+.movie-circle:hover .movie-circle-img {
+  display: none;
+}
+.movie-circle:hover .movie-info {
+  width: 300px;
+  height: 600px;
+  display: flex;
+  background-color: black;
+}
+
+.blind {
+  display: none;
+}
+.movie-item .movie-img {
   object-fit: contain;
+  width: 200px;
+}
+
+.movie-info {
+  width: 0;
+  height: 0;
+  display: none;
+  flex-direction: column;
+  padding: 1.5rem;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.5s ease-in;
+}
+.movie-desc-wrapper {
+  position: relative;
+}
+.movie-desc {
+  text-overflow: ellipsis;
+  max-height: 165px;
+  overflow: hidden;
+}
+.movie-desc-cover {
+  width: 100%;
+  height: 165px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+.movie-item .movie-heading {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.movie-item .movie-desc {
+  flex: 1;
+}
+
+.movie-item .other-info-list {
+  display: flex;
+  align-self: stretch;
+  justify-content: space-between;
+}
+.movie-item .other-info-list .title {
+  margin-right: 0.5rem;
 }
