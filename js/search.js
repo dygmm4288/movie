@@ -1,5 +1,5 @@
-import { createMovieItem } from './controlDom.js';
-import { append, select } from './util.js';
+import { renderMovies } from './index.js';
+import { select } from './util.js';
 
 const serachInput = select('#search-bar-input');
 serachInput.focus();
@@ -11,15 +11,26 @@ export function searchMovie(movies) {
   };
 }
 
-export function submitSearchEvent(movies) {
+export function submitSearchEvent(movies, circleContainers) {
   return (e) => {
     e.preventDefault();
     const value = e.target.querySelector('input').value;
     const nextMovies = value ? searchMovie(movies)(value) : movies;
-    const moviesWrapperUl = select('#movies-wrapper');
+    circleContainers.forEach((circleContainer) => circleContainer.delete());
+    console.log({ movies, circleContainers, value, nextMovies });
+    /* 
 
-    moviesWrapperUl.innerHTML = '';
-    append(moviesWrapperUl, nextMovies.map(createMovieItem));
+    circleContainers = renderMovies(nextMovies);
+    serachInput.focus(); */
+  };
+}
+
+export function handleChangeSearchInput(movies) {
+  return (e) => {
+    e.preventDefault();
+    const value = e.target.querySelector('input').value;
+    const nextMovies = value ? searchMovie(movies)(value) : movies;
+    renderMovies(nextMovies);
     serachInput.focus();
   };
 }

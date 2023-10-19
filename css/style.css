@@ -12,7 +12,8 @@ body {
 
 header {
   position: absolute;
-  width: 100vw;
+  width: 500px;
+  max-width: 500px;
   text-align: center;
 
   left: 50%;
@@ -23,6 +24,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  z-index: 101;
 }
 header h1 {
   background: linear-gradient(to right, #ffffff 0%, #727280 100%);

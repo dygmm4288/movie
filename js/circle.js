@@ -32,18 +32,31 @@ export class CircleContainer {
     this._id = id;
     this._containerElement;
     this._zIndex = zIndex;
+    this._handlerStopRotate = () => {
+      this.stopRotate();
+      containerElement.style.zIndex = 100; // 최상위
+    };
+    this._handlerPlayRotate = () => {
+      this.playRotate();
+      containerElement.style.zIndex = this._zIndex;
+    };
 
     this._circleItems.forEach((circleItem, i) => {
       circleItem.updateTransform(this._angles[i]);
-      circleItem._element.addEventListener('mouseenter', () => {
-        this.stopRotate();
-        containerElement.style.zIndex = 100; // 최상위
-      });
-      circleItem._element.addEventListener('mouseleave', () => {
-        this.playRotate();
-        containerElement.style.zIndex = this._zIndex;
-      });
+      // addEvent는 메모리 해제(삭제)를 해놔야 좋다
+      //
+      circleItem._element.addEventListener('mouseenter', this._handlerStopRotate);
+
+      circleItem._element.addEventListener('mouseleave', this._handlerPlayRotate);
     });
+  }
+  delete() {
+    clearInterval(this._interval);
+    this._circleItems.forEach((circleItem, i) => {
+      circleItem._element.removeEventListener('mouseenter', this._handlerStopRotate);
+      circleItem._element.removeEventListener('mouseleave', this._handlerPlayRotate);
+    });
+    return;
   }
   set speed(value) {
     return (this._spped = value);
