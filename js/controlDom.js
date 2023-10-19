@@ -31,6 +31,8 @@ export const createMovieItemCircle = (movieInfo) => {
   const movieInfoDiv = create('div');
   const movieImg = create('img');
   const movieHeading = create('h3');
+  const descWrapperDiv = create('div');
+  const descDescCoverDiv = create('div');
   const descP = create('p');
   const otherInfoUl = create('ul');
 
@@ -59,6 +61,10 @@ export const createMovieItemCircle = (movieInfo) => {
   descP.classList.add('movie-desc');
   descP.innerText = overview;
 
+  descWrapperDiv.classList.add('movie-desc-wrapper');
+  descDescCoverDiv.classList.add('movie-desc-cover');
+  append(descWrapperDiv, [descP, descDescCoverDiv]);
+
   /* 영화 다른 내용 */
   otherInfoUl.classList.add('other-info-list');
 
@@ -72,8 +78,10 @@ export const createMovieItemCircle = (movieInfo) => {
       },
     ]),
   );
+
   movieCircleDiv.addEventListener('click', () => {
     alert(id);
   });
-  return append(movieCircleDiv, [append(movieThumbDiv, movieCircleImg), append(movieInfoDiv, [movieImg, movieHeading, descP, otherInfoUl])]);
+
+  return append(movieCircleDiv, [append(movieThumbDiv, movieCircleImg), append(movieInfoDiv, [movieImg, movieHeading, descWrapperDiv, otherInfoUl])]);
 };
