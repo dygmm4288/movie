@@ -42,6 +42,8 @@ header h1 {
   margin: 0 auto;
   display: flex;
   position: relative;
+
+  align-items: center;
 }
 #search-bar-input {
   flex: 1;
@@ -57,6 +59,23 @@ header h1 {
 }
 #search-bar-input:focus {
   outline: none;
+}
+#search-bar-form button {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  position: absolute;
+  right: 10px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+#search-bar-form button .search-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-image: url('../img/searchIcon.svg');
+  background-size: 32px 32px;
 }
 
 #search-bar-form:before {
