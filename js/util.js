@@ -28,9 +28,9 @@ export function map(arr, iteratee) {
   return result;
 }
 
-export const makeId = (function* () {
+export const makeIdGenerator = function* () {
   let id = 0;
   while (true) {
     yield id++;
   }
-})();
+};

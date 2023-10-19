@@ -18,10 +18,9 @@ export function submitSearchEvent(movies, circleContainers) {
     const nextMovies = value ? searchMovie(movies)(value) : movies;
     circleContainers.forEach((circleContainer) => circleContainer.delete());
     console.log({ movies, circleContainers, value, nextMovies });
-    /* 
 
     circleContainers = renderMovies(nextMovies);
-    serachInput.focus(); */
+    serachInput.focus();
   };
 }
 

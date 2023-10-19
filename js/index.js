@@ -2,7 +2,7 @@ import { CircleContainer } from './circle.js';
 import { getMovies } from './controlAsync.js';
 import { createMovieItem } from './controlDom.js';
 import { submitSearchEvent } from './search.js';
-import { append, makeId, select } from './util.js';
+import { append, makeIdGenerator, select } from './util.js';
 (async function () {
   let [movies, circleContainers] = await getMovies('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1')
     .then((res) => res.json())
@@ -16,12 +16,13 @@ import { append, makeId, select } from './util.js';
 export function renderMovies(movies) {
   const moviesWrapperUl = select('#movies-wrapper');
   moviesWrapperUl.innerHTML = '';
+  const makeId = makeIdGenerator();
 
   // 5개씩 잘라서
   // 최소 radius 600 + 200씩 늘린다?
-  const size = Math.floor(movies.length / 4);
+  const size = Math.max(1, Math.floor(movies.length / 4));
   const circleContainers = [];
-
+  console.log(movies);
   for (let i = 0, len = movies.length; i < len; i += size) {
     const movieItems = [];
     for (let j = 0; j < size; j++) {
