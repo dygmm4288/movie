@@ -11,7 +11,10 @@ import { append, makeIdGenerator, select } from './util.js';
     });
   console.log(movies);
   const searchForm = select('#search-bar-form');
+  const searchInput = select('#search-bar-input');
+  searchInput.focus();
   searchForm.addEventListener('submit', submitSearchEvent(movies, circleContainers));
+  searchInput.addEventListener('keyup', submitSearchEvent(movies, circleContainers));
 })();
 export function renderMovies(movies) {
   const moviesWrapperUl = select('#movies-wrapper');

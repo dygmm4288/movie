@@ -1,8 +1,4 @@
 import { renderMovies } from './index.js';
-import { select } from './util.js';
-
-const serachInput = select('#search-bar-input');
-serachInput.focus();
 
 export function searchMovie(movies) {
   return (value) => {
@@ -14,22 +10,12 @@ export function searchMovie(movies) {
 export function submitSearchEvent(movies, circleContainers) {
   return (e) => {
     e.preventDefault();
-    const value = e.target.querySelector('input').value;
+    const value = e.target.querySelector('input')?.value || e.currentTarget.value;
     const nextMovies = value ? searchMovie(movies)(value) : movies;
     circleContainers.forEach((circleContainer) => circleContainer.delete());
     console.log({ movies, circleContainers, value, nextMovies });
 
     circleContainers = renderMovies(nextMovies);
-    serachInput.focus();
-  };
-}
-
-export function handleChangeSearchInput(movies) {
-  return (e) => {
-    e.preventDefault();
-    const value = e.target.querySelector('input').value;
-    const nextMovies = value ? searchMovie(movies)(value) : movies;
-    renderMovies(nextMovies);
     serachInput.focus();
   };
 }
