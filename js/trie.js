@@ -25,11 +25,11 @@ export class Trie {
     this._root = new Node();
   }
   push(strArray, originalValue = null, node = this._root) {
-    console.log({ strArray, originalValue, node });
     // 처음에 아무것도 안넣을때는 root를 기반으로 진행
     // str로하지 않고 arry로 해서 뒤집어서 넣고 그 다음에 저기 하는게 좋을 것 같은데
     if (node === this._root) {
       strArray = strArray.split('').reverse(); // 뒤집어서 놓고
+      node._includes.push(originalValue);
     }
     // 여기서는 재귀적으로 처리하는게 좋을 것 같음
     // 언제까지 하냐면 str이 더 이상 없을때까지
@@ -51,12 +51,12 @@ export class Trie {
     if (node === this._root) str = str.split('').reverse();
 
     if (!str.length) {
-      console.log('here', node);
       return node._includes;
     }
     const first = str.pop();
     if (!node._childs[first]) return [];
 
-    return this.find(str, node._childs[first]);
+    const result = this.find(str, node._childs[first]);
+    return result;
   }
 }

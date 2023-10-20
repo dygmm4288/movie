@@ -10,12 +10,33 @@ export function searchMovie(movies) {
 export function submitSearchEvent(movies, circleContainers) {
   return (e) => {
     e.preventDefault();
-    const value = e.target.querySelector('input')?.value || e.currentTarget.value;
+    const searchInput = e.target.querySelector('input') || e.currentTarget;
+    const value = searchInput.value;
     const nextMovies = value ? searchMovie(movies)(value) : movies;
     circleContainers.forEach((circleContainer) => circleContainer.delete());
-    console.log({ movies, circleContainers, value, nextMovies });
+    //console.log({ movies, circleContainers, value, nextMovies });
 
     circleContainers = renderMovies(nextMovies);
-    serachInput.focus();
+    searchInput.focus();
+  };
+}
+function searchMovieWithTrie(trie) {
+  return (value) => {
+    const lowerValue = value.toLowerCase();
+    console.log({ value }, trie.find(lowerValue), trie._root);
+    return trie.find(lowerValue);
+  };
+}
+
+export function searchMovieEvent(trie, circleContainers) {
+  return (e) => {
+    e.preventDefault();
+    const searchInput = e.target.querySelector('input') || e.currentTarget;
+    const value = searchInput.value;
+    const nextMovies = value ? searchMovieWithTrie(trie)(value) : trie._root._includes;
+    console.log(nextMovies);
+    circleContainers.forEach((circleContainer) => circleContainer.delete());
+    circleContainers = renderMovies(nextMovies);
+    searchInput.focus();
   };
 }
