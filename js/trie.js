@@ -17,7 +17,7 @@
 class Node {
   constructor(value) {
     this._childs = {}; // 다음 노드들에 대한 포인터 역할을 하고
-    this._includes = value ? [value] : [];
+    this._includes = value ? new Set([value]) : new Set();
   }
 }
 export class Trie {
@@ -29,7 +29,7 @@ export class Trie {
     // str로하지 않고 arry로 해서 뒤집어서 넣고 그 다음에 저기 하는게 좋을 것 같은데
     if (node === this._root) {
       strArray = strArray.split('').reverse(); // 뒤집어서 놓고
-      node._includes.push(originalValue);
+      node._includes.add(originalValue);
     }
     // 여기서는 재귀적으로 처리하는게 좋을 것 같음
     // 언제까지 하냐면 str이 더 이상 없을때까지
@@ -40,7 +40,7 @@ export class Trie {
     if (!node._childs[first]) {
       node._childs[first] = new Node(originalValue);
     } else {
-      node._childs[first]._includes.push(originalValue);
+      node._childs[first]._includes.add(originalValue);
     }
 
     this.push(strArray, originalValue, node._childs[first]);
@@ -51,7 +51,7 @@ export class Trie {
     if (node === this._root) str = str.split('').reverse();
 
     if (!str.length) {
-      return node._includes;
+      return [...node._includes];
     }
     const first = str.pop();
     if (!node._childs[first]) return [];

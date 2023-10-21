@@ -27,7 +27,7 @@ export const createMovieOtherInfoElement = (info) => {
 
 export const createMovieItemCircle = (movieInfo) => {
   const { title, id, overview, poster_path, vote_average, original_title } = movieInfo;
-  const movieCircleDiv = create('div');
+  const movieCircleDiv = create('div'); // document.createElement('div')
   const movieInfoDiv = create('div');
   const movieImg = create('img');
   const movieHeading = create('h3');

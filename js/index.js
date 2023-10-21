@@ -11,8 +11,10 @@ import { append, makeIdGenerator, select } from './util.js';
       const trie = new Trie();
 
       data.results.forEach((v) => {
-        const { title } = v;
-        trie.push(title.toLowerCase(), v);
+        const lowerTitle = v.title.toLowerCase();
+        for (let i = 0, len = lowerTitle.length; i < len; i++) {
+          trie.push(lowerTitle.slice(i), v);
+        }
       });
       return [data.results, renderMovies(data.results), trie];
     });

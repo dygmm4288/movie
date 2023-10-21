@@ -33,7 +33,8 @@ export function searchMovieEvent(trie, circleContainers) {
     e.preventDefault();
     const searchInput = e.target.querySelector('input') || e.currentTarget;
     const value = searchInput.value;
-    const nextMovies = value ? searchMovieWithTrie(trie)(value) : trie._root._includes;
+    // const nextMovies = value ? searchMovieWithTrie(trie)(value) : trie._root._includes;
+    const nextMovies = searchMovieWithTrie(trie)(value);
     console.log(nextMovies);
     circleContainers.forEach((circleContainer) => circleContainer.delete());
     circleContainers = renderMovies(nextMovies);
