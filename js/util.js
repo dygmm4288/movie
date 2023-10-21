@@ -4,8 +4,11 @@ export function select(selector) {
 export function selectAll(selector) {
   return document.querySelectorAll(selector);
 }
-export function create(tag) {
-  return document.createElement(tag);
+export function create(tag, className, idName) {
+  const result = document.createElement(tag);
+  if (className) result.classList.add(...className.split(' '));
+  if (idName) result.id = idName;
+  return result;
 }
 export function append(parent, childs) {
   if (Array.isArray(childs)) {

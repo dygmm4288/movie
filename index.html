@@ -12,13 +12,17 @@
     <script type="module" src="./js/index.js"></script>
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
   </head>
   <body>
     <header>
       <h1>Top Rated Movie Collection</h1>
       <div id="search-bar">
         <form id="search-bar-form">
-          <input id="search-bar-input" type="text" placeholder="영화 제목을 검색해 보세요" />
+          <input
+            id="search-bar-input"
+            type="text"
+            placeholder="영화 제목을 검색해 보세요" />
           <button type="submit">
             <span class="blind">검색</span>
             <i class="search-icon"></i>
@@ -31,16 +35,27 @@
         <li class="movie-item">
           <div class="movie-circle">
             <div class="movie-thumb">
-              <img class="movie-circle-img" src="https://image.tmdb.org/t/p/w500/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg" alt="" />
+              <img
+                class="movie-circle-img"
+                src="https://image.tmdb.org/t/p/w500/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg"
+                alt="" />
             </div>
             <div class="movie-info">
-              <img class="movie-img" src="https://image.tmdb.org/t/p/w500/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg" alt="" />
+              <img
+                class="movie-img"
+                src="https://image.tmdb.org/t/p/w500/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg"
+                alt="" />
               <h3 class="movie-heading">영화 제목</h3>
               <div class="movie-desc-wrapper">
                 <p class="movie-desc">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos illum accusamus eius beatae, suscipit illo ipsum quisquam quo a dolorem rerum earum. Doloribus quam sed ullam deserunt
-                  dolor maiores harum?Lorem ipsum dolor sit amet consectetur adipisicing elit. Error placeat, nesciunt quisquam consequuntur voluptas at officia, impedit ratione molestias ipsum, velit
-                  fuga? Quibusdam reiciendis quaerat iusto ab aspernatur atque
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
+                  illum accusamus eius beatae, suscipit illo ipsum quisquam quo
+                  a dolorem rerum earum. Doloribus quam sed ullam deserunt dolor
+                  maiores harum?Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Error placeat, nesciunt quisquam
+                  consequuntur voluptas at officia, impedit ratione molestias
+                  ipsum, velit fuga? Quibusdam reiciendis quaerat iusto ab
+                  aspernatur atque
                 </p>
                 <div class="movie-desc-cover"></div>
               </div>
@@ -54,6 +69,17 @@
           </div>
         </li>
       </ul>
+      <div id="modal-wrapper">
+        <div id="modal-content">
+          <div class="control-wrapper">
+            <button type="button">
+              <span class="blind">닫기</span>
+              <i class="close-icon"></i>
+            </button>
+          </div>
+          <div class="movie-detail"></div>
+        </div>
+      </div>
     </main>
   </body>
 </html>

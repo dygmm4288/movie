@@ -1,0 +1,115 @@
+#modal-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#modal-content {
+  position: absolute;
+  width: 0;
+  max-width: 1920px;
+  height: 0;
+  max-height: 1080px;
+
+  /* background-color: red; */
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 20px;
+  overflow: hidden;
+  transition: width 0.5s, height 1s;
+}
+
+#modal-content .control-wrapper {
+  position: absolute;
+
+  right: 1rem;
+  top: 1rem;
+  background-color: transparent;
+  z-index: 201;
+}
+
+#modal-content .control-wrapper button {
+  font-size: 2rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#modal-content .movie-detail {
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+#modal-content .movie-detail-container {
+  float: left;
+  width: 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-top: 5rem;
+}
+#modal-content .movie-detail .movie-detail-title {
+  font-size: 3rem;
+}
+#modal-content .movie-detail .movie-otherinfo-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.movie-other-info {
+  padding: 0.5rem;
+  background-color: gray;
+  border-radius: 15px;
+}
+.movie-heading {
+  font-size: 1.5rem;
+}
+
+.poster-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+.poster-container .poster-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: brightness(50%);
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+
+  transition: opacity 1s;
+}
+.poster-container .poster-item.active {
+  opacity: 1;
+}
+
+i.close-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  background-image: url('../img/x-symbol-svgrepo-com.svg');
+  background-size: 32px 32px;
+}

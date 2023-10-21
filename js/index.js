@@ -5,7 +5,9 @@ import { searchMovieEvent, submitSearchEvent } from './search.js';
 import { Trie } from './trie.js';
 import { append, makeIdGenerator, select } from './util.js';
 (async function () {
-  let [movies, circleContainers, moviesTrie] = await getMovies('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1')
+  let [movies, circleContainers, moviesTrie] = await getMovies(
+    'https://api.themoviedb.org/3/movie/top_rated?language=ko&page=1',
+  )
     .then((res) => res.json())
     .then((data) => {
       const trie = new Trie();
@@ -21,9 +23,23 @@ import { append, makeIdGenerator, select } from './util.js';
 
   const searchForm = select('#search-bar-form');
   const searchInput = select('#search-bar-input');
+  const modalContent = select('#modal-wrapper #modal-content');
+  const modalDetail = select('#modal-wrapper .movie-detail');
+  const closeBtn = select('#modal-wrapper .control-wrapper button');
+  closeBtn.addEventListener('click', () => {
+    modalDetail.innerHTML = '';
+    modalContent.style.width = 0;
+    modalContent.style.height = 0;
+  });
   searchInput.focus();
-  searchForm.addEventListener('submit', submitSearchEvent(movies, circleContainers));
-  searchInput.addEventListener('keyup', searchMovieEvent(moviesTrie, circleContainers));
+  searchForm.addEventListener(
+    'submit',
+    submitSearchEvent(movies, circleContainers),
+  );
+  searchInput.addEventListener(
+    'keyup',
+    searchMovieEvent(moviesTrie, circleContainers),
+  );
 })();
 export function renderMovies(movies) {
   const moviesWrapperUl = select('#movies-wrapper');
@@ -34,7 +50,7 @@ export function renderMovies(movies) {
   // 최소 radius 600 + 200씩 늘린다?
   const size = Math.max(1, Math.floor(movies.length / 4));
   const circleContainers = [];
-  console.log(movies);
+  // console.log(movies);
   for (let i = 0, len = movies.length; i < len; i += size) {
     const movieItems = [];
     for (let j = 0; j < size; j++) {
@@ -53,16 +69,25 @@ export function renderMovies(movies) {
     const startAngle = index % 2 === 0 ? 0 : 45;
     const radius = 600 + 200 * index;
     const speed = Math.random() * 21;
-    const circleContainer = new CircleContainer(Array.prototype.slice.call(circleItems.children), radius, id, startAngle, circleItems, zIndex);
+    const circleContainer = new CircleContainer(
+      Array.prototype.slice.call(circleItems.children),
+      radius,
+      id,
+      startAngle,
+      circleItems,
+      zIndex,
+    );
     circleContainer.speed = speed;
 
     circleItems.style.width = radius + 'px';
     circleItems.style.height = radius + 'px';
 
-    console.log(circleContainer);
+    // console.log(circleContainer);
 
     circleContainer.playRotate();
     circleContainers.push(circleContainer);
   }
   return circleContainers;
 }
+
+function renderDetailMovie() {}
