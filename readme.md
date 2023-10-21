@@ -14,7 +14,8 @@
 
 ## 데모
 
-  <img src='./demo.gif'/>
+  <img src='./demo.gif'>
+  
 ## 사용 기술
  - HTML
  - CSS
