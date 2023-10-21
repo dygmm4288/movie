@@ -11,7 +11,7 @@ import { append, makeIdGenerator, select } from './util.js';
       const trie = new Trie();
 
       data.results.forEach((v) => {
-        const lowerTitle = v.title.toLowerCase();
+        const lowerTitle = v.title.toLowerCase().replace(' ', '');
         for (let i = 0, len = lowerTitle.length; i < len; i++) {
           trie.push(lowerTitle.slice(i), v);
         }
