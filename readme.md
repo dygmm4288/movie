@@ -1,5 +1,7 @@
 # Vanilla Javascript 개인 과제
+
 ## 과제 정보
+
 - 과제 주제 :
   - Javascript과정을 마무리하며, JS 문법의 핵심을 적용해 볼 수 있는 **영화 검색 사이트**를 제작
   - 영화정보 오픈API인 TMDB(The Movie DB)를 사용
@@ -9,8 +11,10 @@
   - Circle Design 추가 : '23.10.18 ~ '23.10.19
   - Trie를 이용한 검색 알고리즘 구현 : '23.10.19 ~ '23.10.20
   - Movie Detail Modal 창 구현 : '23.10.21 ~ '23.10.21
+
 ## 데모
 
+  <img src='./demo.gif'/>
 ## 사용 기술
  - HTML
  - CSS
