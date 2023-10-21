@@ -32,13 +32,16 @@ export class CircleContainer {
     this._id = id;
     this._containerElement;
     this._zIndex = zIndex;
-    this._handlerStopRotate = () => {
+    this._handlerStopRotate = (e) => {
       this.stopRotate();
+      console.log(e);
       containerElement.style.zIndex = 100; // 최상위
+      e.target.style.zIndex = 101;
     };
-    this._handlerPlayRotate = () => {
+    this._handlerPlayRotate = (e) => {
       this.playRotate();
       containerElement.style.zIndex = this._zIndex;
+      e.target.style.zIndex = null;
     };
 
     this._circleItems.forEach((circleItem, i) => {
